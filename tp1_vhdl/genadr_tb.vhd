@@ -1,0 +1,66 @@
+LIBRARY ieee  ; 
+LIBRARY work  ; 
+USE ieee.NUMERIC_STD.all  ; 
+USE ieee.std_logic_1164.all  ; 
+USE ieee.std_logic_arith.all  ; 
+USE ieee.STD_LOGIC_UNSIGNED.all  ; 
+USE work.mes_composants.all  ; 
+ENTITY genadr_tb  IS 
+  GENERIC (
+    M  : NATURAL   := 10 ); 
+END ; 
+ 
+ARCHITECTURE genadr_tb_arch OF genadr_tb IS
+  SIGNAL selRead   :  STD_LOGIC  ; 
+  SIGNAL incWrite   :  STD_LOGIC  ; 
+  SIGNAL Adrg   :  std_logic_vector (M - 1 downto 0)  ; 
+  SIGNAL incRead   :  STD_LOGIC  ; 
+  SIGNAL clk   :  STD_LOGIC  ; 
+  SIGNAL reset   :  STD_LOGIC  ; 
+  COMPONENT genAdr  
+    GENERIC ( 
+      M  : NATURAL  );  
+    PORT ( 
+      selRead  : in STD_LOGIC ; 
+      incWrite  : in STD_LOGIC ; 
+      Adrg  : out std_logic_vector (M - 1 downto 0) ; 
+      incRead  : in STD_LOGIC ; 
+      clk  : in STD_LOGIC ; 
+      reset  : in STD_LOGIC ); 
+  END COMPONENT ; 
+BEGIN
+  DUT  : genAdr  
+    GENERIC MAP ( 
+      M  => M   )
+    PORT MAP ( 
+      selRead   => selRead  ,
+      incWrite   => incWrite  ,
+      Adrg   => Adrg  ,
+      incRead   => incRead  ,
+      clk   => clk  ,
+      reset   => reset   ) ; 
+      
+    
+    process
+      begin
+        clk<='1';
+        Wait for 10 ns;
+        clk<='0';
+        Wait for 10 ns;
+  end process;
+  
+    process
+      begin
+      reset<='1';incRead<='0';incWrite<='0';selRead<='0'; wait for 20 ns;
+      reset<='0'; wait for 30 ns;
+      incRead<='1';incWrite<='1';wait for 60 ns;
+      
+      selRead <='1'; incRead<='0';incWrite<='1';wait for 40 ns;
+      
+      selRead <='0';incRead<='0';incWrite<='1';wait for 40 ns;
+      
+  end process;
+  
+  
+END ; 
+

@@ -1,0 +1,30 @@
+C:/Users/etudiant.e/Desktop/A_TRANSFERER/ENSEA/S10/VHDL_flots_conception/tp2_vhdl/modelsim/entree_sortie_pkg.vhd {2 {vcom -work work -2002 -explicit C:/Users/etudiant.e/Desktop/A_TRANSFERER/ENSEA/S10/VHDL_flots_conception/tp2_vhdl/modelsim/entree_sortie_pkg.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling package entree_sortie_pkg
+-- Compiling package body entree_sortie_pkg
+-- Loading package entree_sortie_pkg
+** Warning: C:/Users/etudiant.e/Desktop/A_TRANSFERER/ENSEA/S10/VHDL_flots_conception/tp2_vhdl/modelsim/entree_sortie_pkg.vhd(31): (vcom-1194) FILE declaration was written using VHDL 1987 syntax.
+
+** Warning: C:/Users/etudiant.e/Desktop/A_TRANSFERER/ENSEA/S10/VHDL_flots_conception/tp2_vhdl/modelsim/entree_sortie_pkg.vhd(37): (vcom-1283) Cannot reference file "FI" inside pure function "get_pixels".
+
+** Warning: C:/Users/etudiant.e/Desktop/A_TRANSFERER/ENSEA/S10/VHDL_flots_conception/tp2_vhdl/modelsim/entree_sortie_pkg.vhd(38): (vcom-1283) Cannot reference file "FI" inside pure function "get_pixels".
+
+** Warning: C:/Users/etudiant.e/Desktop/A_TRANSFERER/ENSEA/S10/VHDL_flots_conception/tp2_vhdl/modelsim/entree_sortie_pkg.vhd(39): (vcom-1283) Cannot reference file "FI" inside pure function "get_pixels".
+
+** Warning: C:/Users/etudiant.e/Desktop/A_TRANSFERER/ENSEA/S10/VHDL_flots_conception/tp2_vhdl/modelsim/entree_sortie_pkg.vhd(40): (vcom-1283) Cannot reference file "FI" inside pure function "get_pixels".
+
+** Warning: C:/Users/etudiant.e/Desktop/A_TRANSFERER/ENSEA/S10/VHDL_flots_conception/tp2_vhdl/modelsim/entree_sortie_pkg.vhd(41): (vcom-1283) Cannot reference file "FI" inside pure function "get_pixels".
+
+** Warning: C:/Users/etudiant.e/Desktop/A_TRANSFERER/ENSEA/S10/VHDL_flots_conception/tp2_vhdl/modelsim/entree_sortie_pkg.vhd(44): (vcom-1283) Cannot reference file "FI" inside pure function "get_pixels".
+
+** Warning: C:/Users/etudiant.e/Desktop/A_TRANSFERER/ENSEA/S10/VHDL_flots_conception/tp2_vhdl/modelsim/entree_sortie_pkg.vhd(45): (vcom-1283) Cannot reference file "FI" inside pure function "get_pixels".
+
+** Warning: C:/Users/etudiant.e/Desktop/A_TRANSFERER/ENSEA/S10/VHDL_flots_conception/tp2_vhdl/modelsim/entree_sortie_pkg.vhd(61): (vcom-1194) FILE declaration was written using VHDL 1987 syntax.
+
+
+} {} {}}

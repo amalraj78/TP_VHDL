@@ -1,0 +1,65 @@
+
+LIBRARY ieee  ; 
+LIBRARY work  ; 
+USE ieee.std_logic_1164.all  ; 
+
+entity sequenceur is 
+  port ( reset, clk, Enread, Enwrite, req : in STD_logic; 
+    Ack, RW_n, OE, Incwrite, Incread, HL, Selread, CS_n : out STD_logic);
+  end sequenceur;
+  
+  architecture Behavioral of sequenceur is
+    type ETAT is (Repos, LECT1, Ecrire, Attente, LECT2);
+      signal current_state, next_state : ETAT;
+      signal Hl_sig : std_logic :='0';
+      begin
+      process(clk, reset)
+        begin
+          if reset='1' then current_state <= Repos;
+          else
+            if clk='1' and clk'event then
+              current_state <= next_state;
+            end if;
+          end if;
+        end process;
+        
+        process (current_state, Enread, Enwrite, req)
+          begin
+            case current_state is 
+              when Repos=>
+                Cs_n<='1'; Rw_n<='1';OE<='0'; Incwrite<='0'; Incread<='0'; Ack<='1';SelRead<='1';Hl<='0';
+                  if Enread='1' then next_state <= Lect1;
+                elsif Req='0' and Enwrite='1' then next_state<= Ecrire;
+                end if;
+              when Lect1=>
+                Cs_n<='0'; Rw_n<='1'; OE<='1'; Incwrite<='0';Incread<='1'; SelRead<='0';Ack<='1';Hl<='1';
+                if Enread='0' then next_state <= Repos;
+                else next_state <= Lect1;
+                end if;
+              when Ecrire=>
+                Cs_n<='0'; Rw_n<='0';OE<='0'; Incwrite<='1'; Incread<='0';Hl<='0'; SelRead<='1'; Ack<='0';
+                if Req='1' then next_state<= Attente;
+                else next_state <= Ecrire;
+                end if;
+              when Attente =>
+                Cs_n<='1'; Rw_n<='1';OE<='0'; Incwrite<='0'; Incread<='0'; Ack<='1';SelRead<='1';Hl<='0'; 
+                if Enread='1' then next_state <= Lect2;
+                elsif Req='0' and Enread='0' then next_state<= Attente;
+                elsif Req='1' and Enread='0' then next_state<= Repos;           
+                end if;
+              when Lect2 =>
+                 Cs_n<='0'; Rw_n<='1'; OE<='1';Incwrite<='0'; Incread<='1'; SelRead<='0';Ack<='1';Hl<='1';
+                if Enread='0' then next_state <= Attente;
+                else next_state <= Lect2;
+                end if;
+            end case;
+          end process;
+          Hl_sig<='1' when Enread ='1' else '0';
+          Hl<='1';
+        end Behavioral;
+        
+                
+                
+
+                
+                  

@@ -1,0 +1,42 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+USE ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
+use work.mes_composants.all;
+
+entity genAdr is 
+  generic( M : natural := 10);
+  Port ( clk: in STD_LOGIC;
+         reset: in STD_LOGIC;
+         incRead : in STD_LOGIC;
+         incWrite : in std_logic;
+         selRead : in std_logic;
+         Adrg : out std_logic_vector(M-1 downto 0)
+       );
+end genAdr;
+    
+architecture genAdr of genAdr is
+  signal cptR:std_logic_vector(M-1 downto 0):=(others=>'0');
+  signal cptW:std_logic_vector(M-1 downto 0):=(others=>'0');
+  
+begin
+  DCPT_M1 : DCPT_M generic map(M)
+                 port map(
+                 clk=>clk,
+                 reset=> reset,
+                 ud=>'0',
+                 enable=>incRead,
+                 cptr=>cptR);
+                 
+  DCPT_M2 : DCPT_M generic map(M)
+                 port map(
+                 clk=>clk,
+                 reset=>reset,
+                 ud=>'0',
+                 enable=>incWrite,
+                 cptr=>cptW);
+                 
+  Adrg <= cptW when selRead = '1' else cptR;  
+end;
+ 

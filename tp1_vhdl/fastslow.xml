@@ -1,0 +1,22 @@
+<interfaceDefinition version='1.2' language='vhdl' kind='component' name='fastslow'>
+  <useClause path='work.mes_composants.all' />
+  <useClause path='ieee.std_logic_arith.all' />
+  <useClause path='ieee.STD_LOGIC_UNSIGNED.all' />
+  <useClause path='ieee.NUMERIC_STD.all' />
+  <useClause path='ieee.std_logic_1164.all' />
+    <macroList>
+
+      <macro name='M' type='NATURAL' kind='' baseType='integer' initializer='10' />
+
+    </macroList>
+    <portList>
+
+      <port name='clk' direction='in' type='STD_LOGIC' kind='' />
+      <port name='reset' direction='in' type='STD_LOGIC' kind='' />
+      <port name='incwrite' direction='in' type='STD_LOGIC' kind='' />
+      <port name='incread' direction='in' type='STD_LOGIC' kind='' />
+      <port name='fast' direction='out' type='STD_LOGIC' kind='' />
+      <port name='slow' direction='out' type='STD_LOGIC' kind='' />
+
+    </portList>
+</interfaceDefinition>
